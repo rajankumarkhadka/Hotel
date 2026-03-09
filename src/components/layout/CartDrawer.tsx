@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   XIcon,
@@ -9,7 +10,7 @@ import {
 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { Button } from '../ui/Button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 export function CartDrawer() {
   const {
     items,
@@ -88,7 +89,7 @@ export function CartDrawer() {
                   <p className="text-text-muted text-sm mb-6">
                     Add some delicious items from our menu
                   </p>
-                  <Link to="/menu" onClick={closeCart}>
+                  <Link href="/menu" onClick={closeCart}>
                     <Button variant="outline">Browse Menu</Button>
                   </Link>
                 </div> :

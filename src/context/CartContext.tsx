@@ -1,4 +1,5 @@
-import React, { useCallback, useState, createContext, useContext } from 'react';
+"use client";
+import { useCallback, useState, createContext, useContext, ReactNode } from 'react';
 export interface CartItem {
   id: string;
   name: string;

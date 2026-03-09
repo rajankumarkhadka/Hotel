@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+"use client";
+
+import Link from 'next/link';
 import {
   MapPinIcon,
   PhoneIcon,
@@ -16,7 +17,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-3 mb-6">
+            <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold to-orange flex items-center justify-center">
                 <span className="font-heading text-bg font-bold text-xl">
                   TK
@@ -66,7 +67,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/menu"
+                  href="/menu"
                   className="text-text-muted hover:text-gold transition-colors">
 
                   Our Menu
@@ -74,7 +75,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  href="/about"
                   className="text-text-muted hover:text-gold transition-colors">
 
                   About Us
@@ -82,7 +83,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/reservation"
+                  href="/reservation"
                   className="text-text-muted hover:text-gold transition-colors">
 
                   Reservations
@@ -90,7 +91,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/gallery"
+                  href="/gallery"
                   className="text-text-muted hover:text-gold transition-colors">
 
                   Gallery
@@ -98,7 +99,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="text-text-muted hover:text-gold transition-colors">
 
                   Contact

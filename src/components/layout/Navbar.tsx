@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+"use client";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuIcon, XIcon, ShoppingBagIcon } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
@@ -32,7 +34,7 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const { totalItems, openCart } = useCart();
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +45,7 @@ export function Navbar() {
   }, []);
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
   return (
     <>
       <motion.header
@@ -58,7 +60,7 @@ export function Navbar() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-orange flex items-center justify-center">
                 <span className="font-heading text-bg font-bold text-lg">
                   TK
@@ -77,11 +79,11 @@ export function Navbar() {
               {navLinks.map((link) =>
               <Link
                 key={link.path}
-                to={link.path}
-                className={`relative text-sm font-medium transition-colors duration-300 ${location.pathname === link.path ? 'text-gold' : 'text-text-primary hover:text-gold'}`}>
+                href={link.path}
+                className={`relative text-sm font-medium transition-colors duration-300 ${pathname === link.path ? 'text-gold' : 'text-text-primary hover:text-gold'}`}>
 
                   {link.label}
-                  {location.pathname === link.path &&
+                  {pathname === link.path &&
                 <motion.div
                   layoutId="navbar-indicator"
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold rounded-full" />
@@ -115,7 +117,7 @@ export function Navbar() {
               </button>
 
               <Link
-                to="/reservation"
+                href="/reservation"
                 className="hidden md:inline-flex px-5 py-2.5 bg-gradient-to-r from-gold to-gold-light text-bg font-semibold rounded-lg hover:shadow-lg hover:shadow-gold/30 transition-all duration-300">
 
                 Book Table
@@ -196,8 +198,8 @@ export function Navbar() {
                     }}>
 
                         <Link
-                      to={link.path}
-                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${location.pathname === link.path ? 'bg-gold/10 text-gold' : 'text-text-primary hover:bg-white/5'}`}>
+                      href={link.path}
+                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${pathname === link.path ? 'bg-gold/10 text-gold' : 'text-text-primary hover:bg-white/5'}`}>
 
                           {link.label}
                         </Link>
@@ -207,7 +209,7 @@ export function Navbar() {
                 </nav>
                 <div className="p-6 border-t border-border">
                   <Link
-                  to="/reservation"
+                  href="/reservation"
                   className="block w-full py-4 bg-gradient-to-r from-gold to-gold-light text-bg font-semibold rounded-lg text-center">
 
                     Book a Table
